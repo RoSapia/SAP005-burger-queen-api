@@ -11,7 +11,7 @@ const getAllOrders = (req, res) => {
 //RETORNA UM USUÁRIO PELO ID
 const getOrder = (req, res) => {
     console.log("get order, chamada =)")
-    const orderId = req.params.id_order
+    const orderId = req.params.orderId
     if (orderId === 'desconhecido') {
         res.status(404).send({
             message: "ID desconhecido, order not found"
@@ -33,7 +33,7 @@ const postOrder = (req, res) => {
 
 const putOrder = (req, res) => {
     console.log("update order chamada ;)")
-    const orderId = req.params.id_order    
+    const orderId = req.params.orderId    
     res.status(201).send({
         message: "Atualiza um order",
         id: orderId
@@ -41,7 +41,7 @@ const putOrder = (req, res) => {
 };
 
 const deleteOrder = (req, res) => {
-    const orderId = req.params.id_order
+    const orderId = req.params.orderId
     console.log("delete order chamada ;)")
     res.status(200).send({
         message: "exclui um order",

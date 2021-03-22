@@ -11,7 +11,7 @@ const getAllUsers = (req, res) => {
 //RETORNA UM USUÁRIO PELO ID
 const getUser = (req, res) => {
     console.log("get user, chamada =)")
-    const userId = req.params.id_user
+    const userId = req.params.uid
     if (userId === 'desconhecido') {
         res.status(404).send({
             message: "ID desconhecido, user not found"
@@ -33,7 +33,7 @@ const postUser = (req, res) => {
 
 const putUser = (req, res) => {
     console.log("update user chamada ;)")
-    const userId = req.params.id_user    
+    const userId = req.params.uid    
     res.status(201).send({
         message: "Atualiza um user",
         id: userId
@@ -41,7 +41,7 @@ const putUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-    const userId = req.params.id_user
+    const userId = req.params.uid
     console.log("delete user chamada ;)")
     res.status(200).send({
         message: "exclui um user",
