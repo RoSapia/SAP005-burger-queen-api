@@ -25,15 +25,23 @@ const getUser = (req, res) => {
 };
 
 const postUser = (req, res) => {
+    const user = {
+        "email": req.body.email,
+        "password": req.body.password,
+        "role": req.body.role,
+        "restaurant": req.body.restaurant,
+        "name": req.body.name
+    }
     console.log("post user chamada ;)")
     res.status(201).send({
-        message: "Insere um novo user"
+        message: "Insere um novo user",
+        userCriado: user
     })
 };
 
 const putUser = (req, res) => {
     console.log("update user chamada ;)")
-    const userId = req.params.uid    
+    const userId = req.params.uid
     res.status(201).send({
         message: "Atualiza um user",
         id: userId
@@ -49,4 +57,4 @@ const deleteUser = (req, res) => {
     })
 };
 
-module.exports = { getAllUsers, getUser, postUser, putUser , deleteUser}
+module.exports = { getAllUsers, getUser, postUser, putUser, deleteUser }

@@ -25,9 +25,14 @@ const getProduct = (req, res, next) => {
 };
 
 const postProduct = (req, res) => {
+    const product = {
+        "name": req.body.name,
+        "price": req.body.price
+    }
     console.log("post product chamada ;)")
     res.status(201).send({
-        message: "Insere um novo product"
+        message: "Insere um novo product",
+        produtoCriado: product
     })
 };
 

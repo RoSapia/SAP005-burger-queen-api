@@ -25,6 +25,18 @@ const getOrder = (req, res) => {
 };
 
 const postOrder = (req, res) => {
+    /*const order = {
+        {
+            "client": req.body.clientName,
+            "table": req.body.table,
+            "products": [
+              {
+                "id": req.body.productId,
+                "qtd": req.body.qtde
+              }
+            ]
+          }
+    }*/
     console.log("post order chamada ;)")
     res.status(201).send({
         message: "Insere um novo order"
