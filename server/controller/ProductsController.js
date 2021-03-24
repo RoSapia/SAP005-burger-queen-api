@@ -1,6 +1,15 @@
 // aqui vai o código que acessa o banco de dados
+const database = require('../db/models')
 
+class ProductsController {
+    static async getAllProducts(req,res){
+        const products = await database.Products.findAll()
+        return res.status(200).json(products)
+    }
+}
+/*
 //RETORNA TODOS OS PRODUTOS
+
 const getAllProducts = (req, res, next) => {
     console.log("get all products chamada =)")
     res.status(200).send({
@@ -55,4 +64,5 @@ const deleteProduct = (req, res) => {
 }
 
 module.exports = { getAllProducts, getProduct, postProduct, putProduct, deleteProduct }
-
+*/
+module.exports = ProductsController
