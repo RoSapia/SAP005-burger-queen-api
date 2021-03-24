@@ -1,14 +1,14 @@
 // aqui vai o código que acessa o banco de dados
 const database = require('../db/models')
 //RETORNA TODOS OS USUÁRIOS
-/*
+
 class UsersController {
     static async getAllUsers(req, res){
         const users = await database.Users.findAll()
         return res.status(200).json(users)
     }
 }
-*/
+/*
 const getAllUsers = (req, res) => {
     console.log("get all users, chamada =)")
     res.status(200).send({
@@ -39,8 +39,8 @@ const postUser = (req, res) => {
         "role": req.body.role,
         "restaurant": req.body.restaurant,
         "name": req.body.name
-    }*/
-    console.log("post user chamada ;)")
+    }*/ 
+   /* console.log("post user chamada ;)")
     res.status(201).send({
         message: "Insere um novo user",
         //userCriado: user
@@ -66,6 +66,6 @@ const deleteUser = (req, res) => {
 };
 
 module.exports = { getAllUsers, getUser, postUser, putUser, deleteUser }
+*/
 
-
-//module.exports = UsersController
+module.exports = UsersController
