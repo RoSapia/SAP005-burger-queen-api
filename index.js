@@ -5,11 +5,11 @@ const port = process.env.PORT || 3000
 
 app.use('/', routes);
 
-app.use(express.urlencoded({ extended: false}))//cors
+/*app.use(express.urlencoded({ extended: false}))//cors
 app.use(express.json())
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')//colocar o domínio do app
+    res.header('Access-Control-Allow-Origin', 'https://bq-apir.herokuapp.com/')//colocar o domínio do app
     res.header(
         'Access-Control-Allow-Header', 
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     }
     next();
 })
-
+*/
 
 app.get('*', (req, res) => {
   res.send('Hello World!')
