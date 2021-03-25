@@ -1,7 +1,15 @@
 // aqui vai o código que acessa o banco de dados
+const database = require('../db/models')
 
 //RETORNA TODOS OS USUÁRIOS
-const getAllOrders = (req, res) => {
+class OrdersController {
+    static async getAllOrders(req, res){
+        const orders = await database.Orders.findAll()
+        return res.status(200).json(orders)
+    }
+}
+
+/*const getAllOrders = (req, res) => {
     console.log("get all Orders, chamada =)")
     res.status(200).send({
         message: "Retorna todos os Orders"
@@ -36,7 +44,7 @@ const postOrder = (req, res) => {
               }
             ]
           }
-    }*/
+    }*//*
     console.log("post order chamada ;)")
     res.status(201).send({
         message: "Insere um novo order"
@@ -62,3 +70,6 @@ const deleteOrder = (req, res) => {
 };
 
 module.exports = { getAllOrders, getOrder, postOrder, putOrder , deleteOrder}
+*/
+
+module.exports = OrdersController
