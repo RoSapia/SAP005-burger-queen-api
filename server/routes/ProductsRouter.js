@@ -4,11 +4,11 @@ const router = Router()
 
 // aqui vai as requisições de products
 router.get("/", ProductsController.getAllProducts)
-/*router.get("/:productid", ProductsController.getProduct)
+router.get("/:productid", ProductsController.getProduct)
 router.post("/", ProductsController.postProduct)
 router.put("/:productid", ProductsController.putProduct)
 router.delete("/:productid", ProductsController.deleteProduct)
-*/
+
 module.exports = router
 
 

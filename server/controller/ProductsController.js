@@ -2,67 +2,49 @@
 const database = require('../db/models')
 
 class ProductsController {
-    static async getAllProducts(req,res){
+    static async getAllProducts(req, res) {
         const products = await database.Products.findAll()
         return res.status(200).json(products)
     }
-}
-/*
-//RETORNA TODOS OS PRODUTOS
 
-const getAllProducts = (req, res, next) => {
-    console.log("get all products chamada =)")
-    res.status(200).send({
-        message: "Retorna todos os produtos"
-    })
-};
-
-//RETORNA UM PRODUTO CHAMADO PELO ID
-const getProduct = (req, res, next) => {
-    const id = req.params.productid
-    console.log("GET Product chamada ;)")
-    if (id === 'desconhecido') {
-        res.status(404).send({
-            message: 'ID desconhecido',
-            id: id
+    static async postProduct(req, res) {
+        const product = await database.Products.create({
+            productsName: req.body.productsName,
+            flavor: req.body.flavor,
+            complement: req.body.complement,
+            price: req.body.price,
+            image: req.body.image,
+            type: req.body.type,
+            subtype: req.body.subtype
         })
-    } else {
-        res.status(200).send({
-            message: 'Você passou um id',            
-        });
+        return res.status(200).json({ 'id': product.id })
     }
-};
+    static async getProduct(req, res) {
+        const product = await database.Products.findAll(
+            { where: { id: req.params.productid } }
+        )
 
-const postProduct = (req, res) => {
-    const product = {
-        "name": req.body.name,
-        "price": req.body.price
+        if (product.length > 0) {
+            return res.status(200).json({ 'response': product[0].dataValues })
+        } else {
+            return res.status(404).json({ 'message': 'Product not found' })
+        }
     }
-    console.log("post product chamada ;)")
-    res.status(201).send({
-        message: "Insere um novo product",
-        produtoCriado: product
-    })
-};
-
-const putProduct = (req, res) => {
-    console.log("update product chamada ;)")
-    const productId = req.params.productid    
-    res.status(201).send({
-        message: "Atualiza um product",
-        id: productId
-    })
-};
-
-const deleteProduct = (req, res) => {
-    const productId = req.params.productid
-    console.log("delete product chamada ;)")
-    res.status(200).send({
-        message: "exclui um product",
-        id: productId
-    })
+    static async putProduct(req, res) {
+        const product = await database.Products.update(
+            req.body, { where: { id: req.params.productid } }
+        )
+        return res.status(200).json({ 'message': 'Product updated' })
+    }
+    static async deleteProduct(req, res) {
+        const product = await database.Products.destroy(
+            { where: { id: req.params.productid } }
+        )
+        if (product != 0) {
+            return res.status(200).json({ 'message': 'Product deleted' })
+        } else {
+            return res.status(404).json({ 'message': 'Product not found' })
+        }
+    }
 }
-
-module.exports = { getAllProducts, getProduct, postProduct, putProduct, deleteProduct }
-*/
 module.exports = ProductsController
