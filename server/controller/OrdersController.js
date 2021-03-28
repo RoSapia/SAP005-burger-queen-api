@@ -7,6 +7,26 @@ class OrdersController {
         const orders = await database.Orders.findAll()
         return res.status(200).json(orders)
     }
+    static async postOrder(req, res) {
+
+        const order = await database.Orders.create({
+            userId: req.body.userId,
+            clientName: req.body.clientName,
+            table: req.body.table,
+            status: req.body.status
+        })
+        return res.status(200).json({ 'id': order.id })
+    }
+    static async getOrder(req, res) {
+        const order = await database.Orders.findAll(
+            { where: { id: req.params.orderId } }
+        )
+        if (order.length > 0) {
+            return res.status(200).json({ 'response': order[0].dataValues })
+        } else {
+            return res.status(404).json({ 'message': 'Order not found' })
+        }
+    }
 }
 
 /*const getAllOrders = (req, res) => {
