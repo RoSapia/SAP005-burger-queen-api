@@ -1,7 +1,6 @@
 // aqui vai o código que acessa o banco de dados
 const database = require('../db/models')
 
-//RETORNA TODOS OS USUÁRIOS
 class OrdersController {
     static async getAllOrders(req, res){
         const orders = await database.Orders.findAll()
@@ -26,7 +25,7 @@ class OrdersController {
         } else {
             return res.status(404).json({ 'message': 'Order not found' })
         }
-    }
+    }    
 }
 
 /*const getAllOrders = (req, res) => {
