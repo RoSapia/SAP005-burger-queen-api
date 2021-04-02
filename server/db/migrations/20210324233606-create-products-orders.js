@@ -10,11 +10,15 @@ module.exports = {
       },
       orderId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       productId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       qtd: {
         type: Sequelize.INTEGER,

@@ -58,9 +58,11 @@ class ProductsController {
             res.status(400).json({ code: 400, message: 'Missing required data' })
         })
     }
+
     static async deleteProduct(req, res) {
+        const id = req.params.productid
         const product = await database.Products.destroy(
-            { where: { id: req.params.productid } }
+            { where: { id: id } }
         )
         .then((result) => {
                 if (result == 0) {
