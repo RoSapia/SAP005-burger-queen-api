@@ -17,7 +17,7 @@ class OrdersController {
         })
         const orderId = order.id
         const productsOrders = await database.ProductsOrders.create({
-            orderId: orderId,
+            orderId: orderId, 
             productId: req.body.productId,
             qtd: req.body.qtd
         })
